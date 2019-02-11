@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-public class GestionConsole
+public class GestionConsole // Cette classe permet d'afficher le manoir en ascii et du texte en dessous
 {
     List<string> texteConsole;
     String s ="";
@@ -28,13 +28,14 @@ public class GestionConsole
             texteConsole.RemoveAt(0);
         }
     }
+
     public void Write()
     {
         List<string> texteConsoleCopie = new List<string>(texteConsole);
         texteConsoleCopie.ForEach(txt => Console.WriteLine(txt));
     }
 
-    public static void Log(string logMessage, TextWriter w)
+    public static void Log(string logMessage, TextWriter w) // on peut logger le texte dans un fichier pour relire après éxécution
     {
         w.WriteLine($"{DateTime.Now.ToLongTimeString()} {DateTime.Now.ToLongDateString()}" +" : " +  logMessage);
     }

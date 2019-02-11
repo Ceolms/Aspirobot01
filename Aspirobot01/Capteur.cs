@@ -8,7 +8,7 @@ public class Capteur
         manoir = m;
 	}
 
-    public  Pièce[,] getEnvironnement() // récupère unne copie de l'environnement actuel
+    public  Pièce[,] getEnvironnement() // récupère une copie de l'environnement actuel
     {
         Pièce[,] manoirOriginal =  manoir.getEnvironnement();
         Pièce[,] manoirCopie = new Pièce[manoir.NBPIECESLIGNE, manoir.NBPIECESLIGNE];

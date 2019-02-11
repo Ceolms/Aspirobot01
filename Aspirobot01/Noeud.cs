@@ -9,18 +9,8 @@ public class Noeud // Noeud de l'arbre d'exploration
     public int posAspiX; 
     public int posAspiY;
     public string action;
-    private int NBPIECESLIGNE;
+    public int NBPIECESLIGNE;
     public List<string> listeActions = new List<string>(); // Liste des actions amenant à ce noeud
-
-    // Successeurs  6 actions possibles , ( ou 5 si l'agent est contre un mur )
-    /*
-    public Noeud noeudActionGauche;
-    public Noeud noeudActionDroite;
-    public Noeud noeudActionHaut;
-    public Noeud noeudActionBas;
-    public Noeud noeudActionAspirer;
-    public Noeud noeudActionRamasser;
-    */
 
     public Noeud(Pièce[,] listePièces, int performance, int profondeur, int posAspiX, int posAspiY, string action,List<string>listeActions, int nbPiecesLigne)
     {
@@ -44,19 +34,12 @@ public class Noeud // Noeud de l'arbre d'exploration
         if (this.action != "bas") listeSuccesseurs.Add(CreerNoeudHaut());
         if (this.action != "haut") listeSuccesseurs.Add(CreerNoeudBas());
         if (this.action != "aspirer") listeSuccesseurs.Add(CreerNoeudAspirer());
-        if (this.action != "ramasser") listeSuccesseurs.Add(CreerNoeudRamasser());
+        if (this.action != "ramasser" || this.action != "aspirer") listeSuccesseurs.Add(CreerNoeudRamasser());
 
         return listeSuccesseurs;
-        /*
-        noeudActionGauche = CreerNoeudGauche();
-        noeudActionDroite = CreerNoeudDroite();
-        noeudActionHaut = CreerNoeudHaut();
-        noeudActionBas = CreerNoeudBas();
-        noeudActionAspirer = CreerNoeudAspirer();
-        noeudActionRamasser = CreerNoeudRamasser();*/
     }
 
-    public Pièce[,] creerPiecesSuccesseur(int posX,int posY,string action) // etat du manoir selon la prochaine action de l'agent
+    public Pièce[,] CreerPiecesSuccesseur(int posX,int posY,string action) // etat du manoir selon la prochaine action de l'agent
     {
         Pièce[,]  listePiècesSuccesseurs = new Pièce[NBPIECESLIGNE, NBPIECESLIGNE];
 
@@ -110,7 +93,7 @@ public class Noeud // Noeud de l'arbre d'exploration
     {
         if (posAspiX != 0)
         {
-            Noeud n = new Noeud(creerPiecesSuccesseur(posAspiX-1,posAspiY,"gauche"),performance-1,profondeur+1,posAspiX-1,posAspiY, "gauche", listeActions,NBPIECESLIGNE);
+            Noeud n = new Noeud(CreerPiecesSuccesseur(posAspiX-1,posAspiY,"gauche"),performance-1,profondeur+1,posAspiX-1,posAspiY, "gauche", listeActions,NBPIECESLIGNE);
             return n;
         }
         return null;
@@ -119,7 +102,7 @@ public class Noeud // Noeud de l'arbre d'exploration
     {
         if (posAspiX != NBPIECESLIGNE-1)
         {
-            Noeud n = new Noeud(creerPiecesSuccesseur(posAspiX+1, posAspiY, "droite"),performance-1,profondeur+1,posAspiX+1,posAspiY,"droite", listeActions, NBPIECESLIGNE);
+            Noeud n = new Noeud(CreerPiecesSuccesseur(posAspiX+1, posAspiY, "droite"),performance-1,profondeur+1,posAspiX+1,posAspiY,"droite", listeActions, NBPIECESLIGNE);
             return n;
         }
         return null;
@@ -128,7 +111,7 @@ public class Noeud // Noeud de l'arbre d'exploration
     {
         if (posAspiY != 0)
         {
-            Noeud n = new Noeud(creerPiecesSuccesseur(posAspiX, posAspiY-1, "haut"),performance-1,profondeur+1,posAspiX,posAspiY-1,"haut",listeActions,NBPIECESLIGNE);
+            Noeud n = new Noeud(CreerPiecesSuccesseur(posAspiX, posAspiY-1, "haut"),performance-1,profondeur+1,posAspiX,posAspiY-1,"haut",listeActions,NBPIECESLIGNE);
             return n;
         }
         return null;
@@ -137,7 +120,7 @@ public class Noeud // Noeud de l'arbre d'exploration
     {
         if (posAspiY != NBPIECESLIGNE -1)
         {
-            Noeud n = new Noeud(creerPiecesSuccesseur(posAspiX, posAspiY+1,"bas"),performance-1,profondeur+1,posAspiX,posAspiY+1,"bas", listeActions,NBPIECESLIGNE);
+            Noeud n = new Noeud(CreerPiecesSuccesseur(posAspiX, posAspiY+1,"bas"),performance-1,profondeur+1,posAspiX,posAspiY+1,"bas", listeActions,NBPIECESLIGNE);
             return n;
         }
         return null;
@@ -154,7 +137,7 @@ public class Noeud // Noeud de l'arbre d'exploration
             newPerf += 15;
         }
 
-        Noeud n = new Noeud(creerPiecesSuccesseur(posAspiX, posAspiY,"aspirer"),newPerf,profondeur+1,posAspiX,posAspiY,"aspirer", listeActions,NBPIECESLIGNE);
+        Noeud n = new Noeud(CreerPiecesSuccesseur(posAspiX, posAspiY,"aspirer"),newPerf,profondeur+1,posAspiX,posAspiY,"aspirer", listeActions,NBPIECESLIGNE);
         return n;
     }
     public Noeud CreerNoeudRamasser()
@@ -162,7 +145,7 @@ public class Noeud // Noeud de l'arbre d'exploration
         int newPerf = performance - 1;
         if (listePièces[posAspiX, posAspiY].contientBijoux) newPerf += 20;
 
-        Noeud n = new Noeud(creerPiecesSuccesseur(posAspiX, posAspiY,"ramasser"),newPerf,profondeur+1,posAspiX,posAspiY,"ramasser", listeActions,NBPIECESLIGNE);
+        Noeud n = new Noeud(CreerPiecesSuccesseur(posAspiX, posAspiY,"ramasser"),newPerf,profondeur+1,posAspiX,posAspiY,"ramasser", listeActions,NBPIECESLIGNE);
         return n;
     }
 }

@@ -50,6 +50,29 @@ public class AgentAspirateur
         listeActions = n.listeActions;
     }
 
+    private void ExplorerGreedy()
+    {
+        gc.AddConsole("L'Agent commence a explorer ( greedy search )");
+
+        var watch = System.Diagnostics.Stopwatch.StartNew();
+
+        Noeud racine = new Noeud(environnement, performance, 0, capteur.getPosX(), capteur.getPosY(), "start", new List<String>(), capteur.getNBLignes());
+
+        Noeud n = arbre.ExplorerGreedy(racine, gc); // exploration informée GreedySearch
+
+        watch.Stop();
+        var elapsedMs = watch.ElapsedMilliseconds;
+
+        gc.AddConsole("L'Agent a fini d'explorer , temps : " + elapsedMs.ToString());
+        gc.AddConsole("Liste des actions : ");
+
+        string actions = "[";
+        foreach (string s in n.listeActions) actions += s + ",";
+        gc.AddConsole(actions + "]");
+
+        listeActions = n.listeActions;
+    }
+
     public void Agir()
     {
         listeActions.RemoveAt(0); // on enleve le start

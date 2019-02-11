@@ -12,7 +12,7 @@ public class ManoirEnvironnement
     private const int PROBABIJOUX = 15; // chance sur 100 a chaque boucle
 
     private const int BONUSBIJOUX = 20;
-    private const int BONUSPOUSSIERE = 15;
+    private const int BONUSPOUSSIERE = 12;
     private const int MALUSBIJOUX = 25;
 
 
