@@ -68,9 +68,9 @@ public class ArbreExploration
         Pièce[,] listePièces = n.listePièces;
         int posX = n.posAspiX;
         int posY = n.posAspiY;
-        if (n.action == "ramasser" && listePièces[posX, posY].contientBijoux) return 0;
+        if (n.action == "ramasser" && listePièces[posX, posY].contientBijoux) return -2000;
         else if (n.action == "aspirer" && listePièces[posX, posY].contientBijoux) return 200;
-        else if (n.action == "aspirer" && listePièces[posX, posY].estSale) return 0;
+        else if (n.action == "aspirer" && listePièces[posX, posY].estSale) return -1500;
         else
         {
             int topDistance = 200;
@@ -78,9 +78,14 @@ public class ArbreExploration
             {
                 for (int j = 0; j < n.NBPIECESLIGNE; j++)
                 {
-                    if(listePièces[i,j].estSale || listePièces[i,j].contientBijoux)
+                    if(listePièces[i,j].estSale)
                     {
-                        int distance = DistanceEuclidienne(posX, posY, i, j);
+                        int distance = DistanceEuclidienne(posX, posY, i, j) -10;
+                        if (distance < topDistance) distance = topDistance;
+                    }
+                    if (listePièces[i, j].contientBijoux)
+                    {
+                        int distance = DistanceEuclidienne(posX, posY, i, j) -20;
                         if (distance < topDistance) distance = topDistance;
                     }
                 }
