@@ -1,55 +1,85 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 
-public class AgentAspirateur 
+public class AgentAspirateur
 {
     public Thread thread;
-    public ManoirEnvironnement manoir;
+    private Capteur capteur;
+    private Effecteur effecteur;
+    private GestionConsole gc;
 
-    public AgentAspirateur(ManoirEnvironnement env)
-	{
+    private ArbreExploration arbre;
+    private const int LIMIT = 6; // profondeur max
+
+    private Pièce[,] environnement; // Belief
+    private int performance = 100; // Desire : le meilleur score
+    private List<string> listeActions = new List<string>(); // Intentions
+
+    public AgentAspirateur(ManoirEnvironnement env, GestionConsole gc)
+    {
         thread = new Thread(new ThreadStart(ThreadLoop));
-        manoir = env;
+        this.gc = gc;
+        capteur = new Capteur(env);
+        effecteur = new Effecteur(env);
+        arbre = new ArbreExploration();
+    }
+        
+
+    private void Explorer()
+    {
+        gc.AddConsole("L'Agent commence a explorer");
+
+        var watch = System.Diagnostics.Stopwatch.StartNew();
+        
+        Noeud racine = new Noeud(environnement, performance,0,capteur.getPosX(), capteur.getPosY(), "start",new List<String>(),capteur.getNBLignes());
+
+        Noeud n =  arbre.Explorer(racine, LIMIT, gc);
+
+        watch.Stop();
+        var elapsedMs = watch.ElapsedMilliseconds;
+
+        gc.AddConsole("L'Agent a fini d'explorer , temps : " +elapsedMs.ToString());
+        gc.AddConsole("Meilleur performance trouvée : " + n.performance);
+        gc.AddConsole("Liste des actions : ");
+
+        string actions = "[";
+        foreach (string s in n.listeActions) actions += s + ",";
+        gc.AddConsole(actions+"]");
+
+        listeActions = n.listeActions;
     }
 
-    private void NettoyerPiece(int x , int y)
+    public void Agir()
     {
-        manoir.AspiNettoie(x, y);
-    }
-
-    private void RecupererBijoux(int x , int y)
-    {
-        manoir.AspiNettoie(x, y);
-    }
-
-    private void DeplacerGauche()
-    {
-        manoir.posAspiX -= 1;
-    }
-    private void DeplacerDroite()
-    {
-        manoir.posAspiX += 1;
-    }
-    private void DeplacerHaut()
-    {
-        manoir.posAspiY -= 1;
-    }
-    private void DeplacerBas()
-    {
-        manoir.posAspiY += 1;
-    }
-
-    private void SeDeplacerRandom() // Pour tester
-    {
-        Random rnd = new Random();
-        int direction = rnd.Next(0, 5);
-        //manoir.WriteConsole("Direction:" + direction);
-
-        if (direction == 1 && manoir.posAspiX != 0) DeplacerGauche(); // GAUCHE
-        else if (direction == 2 && manoir.posAspiY != 0) DeplacerHaut(); // HAUT
-        else if(direction == 3 && manoir.posAspiX != manoir.NBPIECESLIGNE-1) DeplacerDroite(); // DROITE
-        else if(direction == 4 && manoir.posAspiY != manoir.NBPIECESLIGNE - 1) DeplacerBas(); // BAS
-        // Si 0 pas bouger !
+        listeActions.RemoveAt(0); // on enleve le start
+        foreach(string s in listeActions)
+        {
+            gc.AddConsole("L'agent effectue l'action :" + s);
+            switch (s)
+            {
+                case "gauche":
+                    effecteur.DeplacerGauche();
+                    break;
+                case "droite":
+                    effecteur.DeplacerDroite();
+                    break;
+                case "haut":
+                    effecteur.DeplacerHaut();
+                    break;
+                case "bas":
+                    effecteur.DeplacerBas();
+                    break;
+                case "aspirer":
+                    effecteur.NettoyerPiece();
+                    break;
+                case "ramasser":
+                    effecteur.RecupererBijoux();
+                    break;
+            }
+            Thread.Sleep(1000);
+        }
+        listeActions = null;
     }
 
     public void ThreadLoop()
@@ -57,11 +87,14 @@ public class AgentAspirateur
         // Tant que le thread n'est pas tué, on travaille
         while (Thread.CurrentThread.IsAlive)
         {
-            // Attente de 500 ms
-            Thread.Sleep(1000);
+            //Observer l'environnement  UpdateMyState()
+            environnement = capteur.getEnvironnement();
+            int perfEnv = capteur.getPerformance();
+            gc.AddConsole("Performance donnée par l'env : " + perfEnv);
 
-            // Affichage dans la console
-            SeDeplacerRandom();
+            // Choisir plan ChooseAnAction()
+            Explorer();
+            Agir();
         }
     }
 }

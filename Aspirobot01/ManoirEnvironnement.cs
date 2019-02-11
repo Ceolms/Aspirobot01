@@ -5,26 +5,32 @@ using System.Threading;
 public class ManoirEnvironnement
 {
     public Thread thread;
-    List<string> texteConsole = new List<string>();
-
-    public  int NBPIECESLIGNE = 10; // 3x3 salles pour le moment , il suffira de changer
+    
+    public int NBPIECESLIGNE = 10; // 3x3 salles pour le moment , il suffira de changer
 
     private const int PROBAPOUSSIERE = 20; // chance sur 100 a chaque boucle
     private const int PROBABIJOUX = 15; // chance sur 100 a chaque boucle
 
-    public Pièce[,] listePièces; 
+    private const int BONUSBIJOUX = 20;
+    private const int BONUSPOUSSIERE = 15;
+    private const int MALUSBIJOUX = 25;
+
+
+    private Pièce[,] listePièces;
+    private GestionConsole gc;
    
-    public int performance;
+    private int performance;
     public int posAspiX;
     public int posAspiY;
 
 
-    public ManoirEnvironnement()
+    public ManoirEnvironnement(GestionConsole gc)
 	{
         thread = new Thread(new ThreadStart(ThreadLoop));
+        this.gc = gc;
 
         listePièces = new Pièce[NBPIECESLIGNE, NBPIECESLIGNE];
-        performance = 0;
+        performance = 100;
         posAspiX = 0;
         posAspiY = 0;
 
@@ -37,29 +43,23 @@ public class ManoirEnvironnement
         }
     }
 
-    public void WriteConsole(string txt)
-    {
-        texteConsole.Add(txt);
-        if(texteConsole.Count > 10)
-        {
-            texteConsole.RemoveAt(0);
-        }
-    }
-
     public void AspiNettoie(int x, int y)
     {
+        if (listePièces[x, y].contientBijoux) performance -= MALUSBIJOUX; // bijoux aspirées
+        else if (listePièces[x, y].estSale) performance += BONUSPOUSSIERE; // poussiere nettoyé , pas de bijoux aspirées
+        performance--; // 1 action = 1 electricite
+
         listePièces[x, y].estSale = false;
         listePièces[x, y].contientBijoux = false;
 
-        // update Score
     }
 
     public void AspiRecupereBijoux(int x, int y)
     {
+        if (listePièces[x, y].contientBijoux) performance += BONUSBIJOUX;
+        performance--; // 1 action = 1 electricite
         listePièces[x, y].contientBijoux = false;
-        // update Score
     }
-
 
     private void SalirPiece()
     {
@@ -82,11 +82,15 @@ public class ManoirEnvironnement
         }
     }
 
-    private void DessinerPiece(Pièce piece)
+    private void DessinerPiece(Pièce piece) // Dessin en ASCII du manoir
     {
         if(posAspiX == piece.coordsX && posAspiY == piece.coordsY)
         {
             Console.Write("[A]"); // piece contient l'agent Aspirateur
+        }
+        else if (piece.estSale == true && piece.contientBijoux == true)
+        {
+            Console.Write("[*]"); // piece vide
         }
         else if (piece.estSale == false && piece.contientBijoux == false)
         {
@@ -111,20 +115,31 @@ public class ManoirEnvironnement
         }
     }
 
-    // Cette méthode est appelé lors du lancement du thread
-    // C'est ici qu'il faudra faire notre travail.
+    public Pièce[,] getEnvironnement()
+    {
+        return listePièces;
+    }
+
+    public int getPerformance()
+    {
+        int perf =  performance;
+        performance = 100;
+        return perf;
+    }
+
     public void ThreadLoop()
     {
-        // Tant que le thread n'est pas tué, on travaille
+        listePièces[1, 0].estSale = true;
+        listePièces[0, 1].contientBijoux = true;
         while (Thread.CurrentThread.IsAlive)
         {
             Console.Clear();
             SalirPiece();
             DessinerManoir();
-            texteConsole.ForEach(txt => Console.WriteLine(txt));
-            WriteConsole(posAspiX + ":" + posAspiY);
+           
+            //gc.AddConsole(posAspiX + ":" + posAspiY);
+            gc.Write();
             Thread.Sleep(1000);
-            
         }
     }
 }

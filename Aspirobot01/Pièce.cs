@@ -12,4 +12,12 @@ public class Pièce
         coordsX = x;
         coordsY = y;
 	}
+
+    public Pièce(int x , int y , bool estSale,bool contientBijoux)
+    {
+        coordsX = x;
+        coordsY = y;
+        this.estSale = estSale;
+        this.contientBijoux = contientBijoux;
+    }
 }

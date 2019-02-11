@@ -694,11 +694,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\theo\\OneDrive\\Etudes\\UQAC\\Hiver 2019\\IA\\Aspirobot01\\Aspirobot01\\Aspirobot01.csproj",
+      "projectUniqueName": "C:\\Users\\theo\\OneDrive\\Etudes\\UQAC\\Hiver 2019\\IA\\Aspirobot01_TP1\\Aspirobot01\\Aspirobot01.csproj",
       "projectName": "Aspirobot01",
-      "projectPath": "C:\\Users\\theo\\OneDrive\\Etudes\\UQAC\\Hiver 2019\\IA\\Aspirobot01\\Aspirobot01\\Aspirobot01.csproj",
+      "projectPath": "C:\\Users\\theo\\OneDrive\\Etudes\\UQAC\\Hiver 2019\\IA\\Aspirobot01_TP1\\Aspirobot01\\Aspirobot01.csproj",
       "packagesPath": "C:\\Users\\theo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\theo\\OneDrive\\Etudes\\UQAC\\Hiver 2019\\IA\\Aspirobot01\\Aspirobot01\\obj\\",
+      "outputPath": "C:\\Users\\theo\\OneDrive\\Etudes\\UQAC\\Hiver 2019\\IA\\Aspirobot01_TP1\\Aspirobot01\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
