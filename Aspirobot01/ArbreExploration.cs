@@ -47,19 +47,25 @@ public class ArbreExploration
 
     public Noeud GreedySearch(Noeud noeud)
     {
+        string s = "[";
+        foreach (string act in noeud.listeActions) s += act + ",";
+        gc.AddConsole(" Greedy: noeud perf:" + noeud.performance + ", profondeur : " + noeud.profondeur + s + "] " + noeud.posAspiX + ":" + noeud.posAspiY);
         List<Noeud> listeSuccesseurs = noeud.EtendreNoeud();
         Noeud topNoeud = noeud;
         int topHeuristique = 200;
         for(int i = 0; i< listeSuccesseurs.Count;i++)
         {
-            int heur = Heuristique(listeSuccesseurs[i]);
-            if ( heur < topHeuristique)
+            if(listeSuccesseurs[i] != null)
             {
-                topNoeud = noeud;
-                topHeuristique = heur; 
-            }
+                int heur = Heuristique(listeSuccesseurs[i]);
+                if (heur < topHeuristique)
+                {
+                    topNoeud = listeSuccesseurs[i];
+                    topHeuristique = heur;
+                }
+            }  
         }
-        if (topHeuristique == 0) return topNoeud;
+        if (topNoeud.action  == "aspirer" || topNoeud.action == "ramasser") return topNoeud;
         else return GreedySearch(topNoeud);
     }
 
@@ -68,9 +74,8 @@ public class ArbreExploration
         Pièce[,] listePièces = n.listePièces;
         int posX = n.posAspiX;
         int posY = n.posAspiY;
-        if (n.action == "ramasser" && listePièces[posX, posY].contientBijoux) return -2000;
-        else if (n.action == "aspirer" && listePièces[posX, posY].contientBijoux) return 200;
-        else if (n.action == "aspirer" && listePièces[posX, posY].estSale) return -1500;
+        if (n.action == "ramasser") return -2000;
+        else if (n.action == "aspirer") return -1500;
         else
         {
             int topDistance = 200;
@@ -80,13 +85,13 @@ public class ArbreExploration
                 {
                     if(listePièces[i,j].estSale)
                     {
-                        int distance = DistanceEuclidienne(posX, posY, i, j) -10;
-                        if (distance < topDistance) distance = topDistance;
+                        int distance = DistanceEuclidienne(posX, posY, i, j) -2;
+                        if (distance < topDistance) topDistance = distance;
                     }
                     if (listePièces[i, j].contientBijoux)
                     {
-                        int distance = DistanceEuclidienne(posX, posY, i, j) -20;
-                        if (distance < topDistance) distance = topDistance;
+                        int distance = DistanceEuclidienne(posX, posY, i, j) -5;
+                        if (distance < topDistance) topDistance = distance;
                     }
                 }
             }

@@ -1,0 +1,4 @@
+20:46:17 lundi 11 février 2019 : Performance donnée par l'env : 100
+20:46:17 lundi 11 février 2019 : L'Agent commence a explorer ( greedy search )
+20:46:17 lundi 11 février 2019 :  Greedy: noeud perf:100, profondeur : 0[start,] 0:0
+20:47:45 lundi 11 février 2019 :  Greedy: noeud perf:99, profondeur : 1[start,bas,] 0:1

@@ -1,0 +1,21 @@
+20:48:53 lundi 11 février 2019 : Performance donnée par l'env : 100
+20:48:53 lundi 11 février 2019 : L'Agent commence a explorer ( greedy search )
+20:48:53 lundi 11 février 2019 :  Greedy: noeud perf:100, profondeur : 0[start,] 0:0
+20:50:22 lundi 11 février 2019 :  Greedy: noeud perf:99, profondeur : 1[start,bas,] 0:1
+20:52:04 lundi 11 février 2019 : L'Agent a fini d'explorer , temps : 191639
+20:52:04 lundi 11 février 2019 : Liste des actions : 
+20:52:04 lundi 11 février 2019 : [start,bas,aspirer,]
+20:52:06 lundi 11 février 2019 : L'agent effectue l'action :bas
+20:52:07 lundi 11 février 2019 : L'agent effectue l'action :aspirer
+20:52:08 lundi 11 février 2019 : Performance donnée par l'env : 74
+20:52:08 lundi 11 février 2019 : L'Agent commence a explorer ( greedy search )
+20:52:08 lundi 11 février 2019 :  Greedy: noeud perf:100, profondeur : 0[start,] 0:1
+20:53:04 lundi 11 février 2019 :  Greedy: noeud perf:99, profondeur : 1[start,bas,] 0:2
+20:54:17 lundi 11 février 2019 : L'Agent a fini d'explorer , temps : 129136
+20:54:17 lundi 11 février 2019 : Liste des actions : 
+20:54:17 lundi 11 février 2019 : [start,bas,aspirer,]
+20:54:20 lundi 11 février 2019 : L'agent effectue l'action :bas
+20:54:21 lundi 11 février 2019 : L'agent effectue l'action :aspirer
+20:54:22 lundi 11 février 2019 : Performance donnée par l'env : 74
+20:54:22 lundi 11 février 2019 : L'Agent commence a explorer ( greedy search )
+20:54:22 lundi 11 février 2019 :  Greedy: noeud perf:100, profondeur : 0[start,] 0:2

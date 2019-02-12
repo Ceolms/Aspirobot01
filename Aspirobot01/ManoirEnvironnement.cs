@@ -109,7 +109,7 @@ public class ManoirEnvironnement
         {
             for (int j = 0; j < NBPIECESLIGNE; j++)
             {
-                DessinerPiece(listePièces[i, j]);
+                DessinerPiece(listePièces[j, i]);
             }
             Console.Write("\n");
         }

@@ -127,6 +127,7 @@ public class Noeud // Noeud de l'arbre d'exploration
     }
     public Noeud CreerNoeudAspirer()
     {
+
         int newPerf = performance - 1;
         if (listePièces[posAspiX, posAspiY].contientBijoux)
         {
@@ -136,6 +137,7 @@ public class Noeud // Noeud de l'arbre d'exploration
         {
             newPerf += 15;
         }
+        else return null;
 
         Noeud n = new Noeud(CreerPiecesSuccesseur(posAspiX, posAspiY,"aspirer"),newPerf,profondeur+1,posAspiX,posAspiY,"aspirer", listeActions,NBPIECESLIGNE);
         return n;
@@ -144,6 +146,7 @@ public class Noeud // Noeud de l'arbre d'exploration
     {
         int newPerf = performance - 1;
         if (listePièces[posAspiX, posAspiY].contientBijoux) newPerf += 20;
+        else return null;
 
         Noeud n = new Noeud(CreerPiecesSuccesseur(posAspiX, posAspiY,"ramasser"),newPerf,profondeur+1,posAspiX,posAspiY,"ramasser", listeActions,NBPIECESLIGNE);
         return n;

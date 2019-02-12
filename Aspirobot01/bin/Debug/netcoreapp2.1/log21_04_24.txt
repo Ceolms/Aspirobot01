@@ -1,0 +1,80 @@
+21:04:24 lundi 11 février 2019 : Performance donnée par l'env : 100
+21:04:25 lundi 11 février 2019 : L'Agent commence a explorer ( greedy search )
+21:04:25 lundi 11 février 2019 :  Greedy: noeud perf:100, profondeur : 0[start,] 0:0
+21:04:25 lundi 11 février 2019 :  Greedy: noeud perf:99, profondeur : 1[start,bas,] 0:1
+21:04:25 lundi 11 février 2019 : L'Agent a fini d'explorer , temps : 8
+21:04:25 lundi 11 février 2019 : Liste des actions : 
+21:04:25 lundi 11 février 2019 : [start,bas,ramasser,]
+21:04:25 lundi 11 février 2019 : L'agent effectue l'action :bas
+21:04:26 lundi 11 février 2019 : L'agent effectue l'action :ramasser
+21:04:27 lundi 11 février 2019 : Performance donnée par l'env : 74
+21:04:27 lundi 11 février 2019 : L'Agent commence a explorer ( greedy search )
+21:04:27 lundi 11 février 2019 :  Greedy: noeud perf:100, profondeur : 0[start,] 0:1
+21:04:27 lundi 11 février 2019 :  Greedy: noeud perf:99, profondeur : 1[start,droite,] 1:1
+21:04:27 lundi 11 février 2019 :  Greedy: noeud perf:98, profondeur : 2[start,droite,haut,] 1:0
+21:04:27 lundi 11 février 2019 : L'Agent a fini d'explorer , temps : 4
+21:04:27 lundi 11 février 2019 : Liste des actions : 
+21:04:27 lundi 11 février 2019 : [start,droite,haut,aspirer,]
+21:04:27 lundi 11 février 2019 : L'agent effectue l'action :droite
+21:04:28 lundi 11 février 2019 : L'agent effectue l'action :haut
+21:04:29 lundi 11 février 2019 : L'agent effectue l'action :aspirer
+21:04:30 lundi 11 février 2019 : Performance donnée par l'env : 111
+21:04:30 lundi 11 février 2019 : L'Agent commence a explorer ( greedy search )
+21:04:30 lundi 11 février 2019 :  Greedy: noeud perf:100, profondeur : 0[start,] 1:0
+21:04:30 lundi 11 février 2019 :  Greedy: noeud perf:99, profondeur : 1[start,bas,] 1:1
+21:04:30 lundi 11 février 2019 :  Greedy: noeud perf:98, profondeur : 2[start,bas,bas,] 1:2
+21:04:30 lundi 11 février 2019 : L'Agent a fini d'explorer , temps : 4
+21:04:30 lundi 11 février 2019 : Liste des actions : 
+21:04:30 lundi 11 février 2019 : [start,bas,bas,ramasser,]
+21:04:30 lundi 11 février 2019 : L'agent effectue l'action :bas
+21:04:31 lundi 11 février 2019 : L'agent effectue l'action :bas
+21:04:32 lundi 11 février 2019 : L'agent effectue l'action :ramasser
+21:04:33 lundi 11 février 2019 : Performance donnée par l'env : 74
+21:04:33 lundi 11 février 2019 : L'Agent commence a explorer ( greedy search )
+21:04:33 lundi 11 février 2019 :  Greedy: noeud perf:100, profondeur : 0[start,] 1:2
+21:04:33 lundi 11 février 2019 : L'Agent a fini d'explorer , temps : 1
+21:04:33 lundi 11 février 2019 : Liste des actions : 
+21:04:33 lundi 11 février 2019 : [start,ramasser,]
+21:04:33 lundi 11 février 2019 : L'agent effectue l'action :ramasser
+21:04:34 lundi 11 février 2019 : Performance donnée par l'env : 74
+21:04:34 lundi 11 février 2019 : L'Agent commence a explorer ( greedy search )
+21:04:34 lundi 11 février 2019 :  Greedy: noeud perf:100, profondeur : 0[start,] 1:2
+21:04:34 lundi 11 février 2019 :  Greedy: noeud perf:99, profondeur : 1[start,gauche,] 0:2
+21:04:34 lundi 11 février 2019 : L'Agent a fini d'explorer , temps : 3
+21:04:34 lundi 11 février 2019 : Liste des actions : 
+21:04:34 lundi 11 février 2019 : [start,gauche,aspirer,]
+21:04:34 lundi 11 février 2019 : L'agent effectue l'action :gauche
+21:04:35 lundi 11 février 2019 : L'agent effectue l'action :aspirer
+21:04:36 lundi 11 février 2019 : Performance donnée par l'env : 111
+21:04:36 lundi 11 février 2019 : L'Agent commence a explorer ( greedy search )
+21:04:36 lundi 11 février 2019 :  Greedy: noeud perf:100, profondeur : 0[start,] 0:2
+21:04:36 lundi 11 février 2019 :  Greedy: noeud perf:99, profondeur : 1[start,haut,] 0:1
+21:04:36 lundi 11 février 2019 :  Greedy: noeud perf:98, profondeur : 2[start,haut,droite,] 1:1
+21:04:36 lundi 11 février 2019 :  Greedy: noeud perf:97, profondeur : 3[start,haut,droite,haut,] 1:0
+21:04:36 lundi 11 février 2019 : L'Agent a fini d'explorer , temps : 6
+21:04:36 lundi 11 février 2019 : Liste des actions : 
+21:04:36 lundi 11 février 2019 : [start,haut,droite,haut,ramasser,]
+21:04:36 lundi 11 février 2019 : L'agent effectue l'action :haut
+21:04:37 lundi 11 février 2019 : L'agent effectue l'action :droite
+21:04:38 lundi 11 février 2019 : L'agent effectue l'action :haut
+21:04:39 lundi 11 février 2019 : L'agent effectue l'action :ramasser
+21:04:40 lundi 11 février 2019 : Performance donnée par l'env : 74
+21:04:40 lundi 11 février 2019 : L'Agent commence a explorer ( greedy search )
+21:04:40 lundi 11 février 2019 :  Greedy: noeud perf:100, profondeur : 0[start,] 1:0
+21:04:40 lundi 11 février 2019 :  Greedy: noeud perf:99, profondeur : 1[start,droite,] 2:0
+21:04:40 lundi 11 février 2019 :  Greedy: noeud perf:98, profondeur : 2[start,droite,bas,] 2:1
+21:04:40 lundi 11 février 2019 : L'Agent a fini d'explorer , temps : 4
+21:04:40 lundi 11 février 2019 : Liste des actions : 
+21:04:40 lundi 11 février 2019 : [start,droite,bas,aspirer,]
+21:04:40 lundi 11 février 2019 : L'agent effectue l'action :droite
+21:04:41 lundi 11 février 2019 : L'agent effectue l'action :bas
+21:04:42 lundi 11 février 2019 : L'agent effectue l'action :aspirer
+21:04:43 lundi 11 février 2019 : Performance donnée par l'env : 111
+21:04:43 lundi 11 février 2019 : L'Agent commence a explorer ( greedy search )
+21:04:43 lundi 11 février 2019 :  Greedy: noeud perf:100, profondeur : 0[start,] 2:1
+21:04:43 lundi 11 février 2019 :  Greedy: noeud perf:99, profondeur : 1[start,gauche,] 1:1
+21:04:43 lundi 11 février 2019 :  Greedy: noeud perf:98, profondeur : 2[start,gauche,bas,] 1:2
+21:04:43 lundi 11 février 2019 : L'Agent a fini d'explorer , temps : 5
+21:04:43 lundi 11 février 2019 : Liste des actions : 
+21:04:43 lundi 11 février 2019 : [start,gauche,bas,ramasser,]
+21:04:43 lundi 11 février 2019 : L'agent effectue l'action :gauche

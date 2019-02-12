@@ -116,7 +116,8 @@ public class AgentAspirateur
             gc.AddConsole("Performance donnée par l'env : " + perfEnv);
 
             // Choisir plan ChooseAnAction()
-            Explorer();
+            // Explorer();
+            ExplorerGreedy();
             Agir();
         }
     }
