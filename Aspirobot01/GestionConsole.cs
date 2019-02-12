@@ -5,6 +5,7 @@ using System.IO;
 public class GestionConsole // Cette classe permet d'afficher le manoir en ascii et du texte en dessous
 {
     List<string> texteConsole;
+    public bool useLog;
     String s ="";
 
 
@@ -17,11 +18,14 @@ public class GestionConsole // Cette classe permet d'afficher le manoir en ascii
 
     public void AddConsole(string txt) // Pour afficher du texte sans effacer le manoir
     {   
-        using (StreamWriter w = File.AppendText(s))
+        if(useLog)
         {
-            Log(txt, w);
+            using (StreamWriter w = File.AppendText(s))
+            {
+                Log(txt, w);
+            }
         }
-
+        
         texteConsole.Add(txt);
         if (texteConsole.Count > 26)
         {

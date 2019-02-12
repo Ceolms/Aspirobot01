@@ -90,7 +90,7 @@ public class ManoirEnvironnement
         }
         else if (piece.estSale == true && piece.contientBijoux == true)
         {
-            Console.Write("[*]"); // piece vide
+            Console.Write("[*]"); // piece contient de la poussiere et des bijoux
         }
         else if (piece.estSale == false && piece.contientBijoux == false)
         {

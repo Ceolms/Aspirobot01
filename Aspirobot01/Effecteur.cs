@@ -1,6 +1,6 @@
 ﻿using System;
 
-public class Effecteur
+public class Effecteur // Classe qui agit sur le manoir , déplace l'aspirateur et nettoye les salles
 {
     ManoirEnvironnement manoir;
 
@@ -34,18 +34,5 @@ public class Effecteur
     public void DeplacerBas()
     {
         manoir.posAspiY += 1;
-    }
-
-    public  void SeDeplacerRandom() // Pour tester
-    {
-        Random rnd = new Random();
-        int direction = rnd.Next(0, 5);
-        //manoir.WriteConsole("Direction:" + direction);
-
-        if (direction == 1 && manoir.posAspiX != 0) DeplacerGauche(); // GAUCHE
-        else if (direction == 2 && manoir.posAspiY != 0) DeplacerHaut(); // HAUT
-        else if (direction == 3 && manoir.posAspiX != manoir.NBPIECESLIGNE - 1) DeplacerDroite(); // DROITE
-        else if (direction == 4 && manoir.posAspiY != manoir.NBPIECESLIGNE - 1) DeplacerBas(); // BAS
-        // Si 0 pas bouger !
     }
 }

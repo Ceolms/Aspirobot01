@@ -5,12 +5,13 @@ using System.Threading;
 public class AgentAspirateur
 {
     public Thread thread;
+    public bool explorationInformee;
     private Capteur capteur;
     private Effecteur effecteur;
     private GestionConsole gc;
 
     private ArbreExploration arbre;
-    private const int LIMIT = 6; // profondeur max
+    public int limite = 6; // profondeur max de Depth-Search
 
     private Pièce[,] environnement; // Belief
     private int performance = 100; // Desire : le meilleur score
@@ -24,7 +25,6 @@ public class AgentAspirateur
         effecteur = new Effecteur(env);
         arbre = new ArbreExploration();
     }
-        
 
     private void Explorer()
     {
@@ -34,7 +34,7 @@ public class AgentAspirateur
         
         Noeud racine = new Noeud(environnement, performance,0,capteur.getPosX(), capteur.getPosY(), "start",new List<String>(),capteur.getNBLignes());
 
-        Noeud n =  arbre.Explorer(racine, LIMIT, gc);
+        Noeud n =  arbre.Explorer(racine, limite, gc); // Exploration via Depth-Search
 
         watch.Stop();
         var elapsedMs = watch.ElapsedMilliseconds;
@@ -110,14 +110,15 @@ public class AgentAspirateur
         // Tant que le thread n'est pas tué, on travaille
         while (Thread.CurrentThread.IsAlive)
         {
-            //Observer l'environnement  UpdateMyState()
+            //Observer l'environnement  ()
             environnement = capteur.getEnvironnement();
             int perfEnv = capteur.getPerformance();
             gc.AddConsole("Performance donnée par l'env : " + perfEnv);
+            
+            // Choisir plan ()
+            if (explorationInformee) ExplorerGreedy();
+            else Explorer();
 
-            // Choisir plan ChooseAnAction()
-            // Explorer();
-            ExplorerGreedy();
             Agir();
         }
     }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-public class Capteur
+public class Capteur // Classe qui récupère les données du manoir
 {
     ManoirEnvironnement manoir;
 	public Capteur(ManoirEnvironnement m)

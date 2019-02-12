@@ -90,7 +90,8 @@ public class ArbreExploration
                     }
                     if (listePièces[i, j].contientBijoux)
                     {
-                        int distance = DistanceEuclidienne(posX, posY, i, j) -5;
+                        int distance = DistanceEuclidienne(posX, posY, i, j) -5; 
+                        // Il est plus intérréssant de recuperer un bijoux que de nettoyer la poussiere , donc on ajoute un bonus à l'heuristique
                         if (distance < topDistance) topDistance = distance;
                     }
                 }

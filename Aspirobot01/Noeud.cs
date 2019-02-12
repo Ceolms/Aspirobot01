@@ -26,7 +26,7 @@ public class Noeud // Noeud de l'arbre d'exploration
         this.NBPIECESLIGNE = nbPiecesLigne;
     }
 
-    public List<Noeud> EtendreNoeud()
+    public List<Noeud> EtendreNoeud() // Creer les successeurs de ce noeud
     {   // on évite de répeter des actions (ramasser -> ramasser) et inutiles ( gauche -> droite)
         List<Noeud> listeSuccesseurs = new List<Noeud>();
         if (this.action!= "droite") listeSuccesseurs.Add(CreerNoeudGauche());
@@ -137,7 +137,7 @@ public class Noeud // Noeud de l'arbre d'exploration
         {
             newPerf += 15;
         }
-        else return null;
+        else return null; // on ne créer pas ne noeud aspirer si cela n'a pas d'utilité
 
         Noeud n = new Noeud(CreerPiecesSuccesseur(posAspiX, posAspiY,"aspirer"),newPerf,profondeur+1,posAspiX,posAspiY,"aspirer", listeActions,NBPIECESLIGNE);
         return n;
@@ -146,7 +146,7 @@ public class Noeud // Noeud de l'arbre d'exploration
     {
         int newPerf = performance - 1;
         if (listePièces[posAspiX, posAspiY].contientBijoux) newPerf += 20;
-        else return null;
+        else return null; // on ne créer pas ne noeud ramasser si cela n'a pas d'utilité
 
         Noeud n = new Noeud(CreerPiecesSuccesseur(posAspiX, posAspiY,"ramasser"),newPerf,profondeur+1,posAspiX,posAspiY,"ramasser", listeActions,NBPIECESLIGNE);
         return n;
