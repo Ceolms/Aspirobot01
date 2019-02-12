@@ -1,0 +1,11 @@
+C:\Users\theo\OneDrive\Etudes\UQAC\Hiver 2019\IA\Aspirobot01_TP1\Aspirobot01\bin\Release\netcoreapp2.1\Aspirobot01.deps.json
+C:\Users\theo\OneDrive\Etudes\UQAC\Hiver 2019\IA\Aspirobot01_TP1\Aspirobot01\bin\Release\netcoreapp2.1\Aspirobot01.runtimeconfig.json
+C:\Users\theo\OneDrive\Etudes\UQAC\Hiver 2019\IA\Aspirobot01_TP1\Aspirobot01\bin\Release\netcoreapp2.1\Aspirobot01.runtimeconfig.dev.json
+C:\Users\theo\OneDrive\Etudes\UQAC\Hiver 2019\IA\Aspirobot01_TP1\Aspirobot01\bin\Release\netcoreapp2.1\Aspirobot01.dll
+C:\Users\theo\OneDrive\Etudes\UQAC\Hiver 2019\IA\Aspirobot01_TP1\Aspirobot01\bin\Release\netcoreapp2.1\Aspirobot01.pdb
+C:\Users\theo\OneDrive\Etudes\UQAC\Hiver 2019\IA\Aspirobot01_TP1\Aspirobot01\obj\Release\netcoreapp2.1\Aspirobot01.csproj.CoreCompileInputs.cache
+C:\Users\theo\OneDrive\Etudes\UQAC\Hiver 2019\IA\Aspirobot01_TP1\Aspirobot01\obj\Release\netcoreapp2.1\Aspirobot01.AssemblyInfoInputs.cache
+C:\Users\theo\OneDrive\Etudes\UQAC\Hiver 2019\IA\Aspirobot01_TP1\Aspirobot01\obj\Release\netcoreapp2.1\Aspirobot01.AssemblyInfo.cs
+C:\Users\theo\OneDrive\Etudes\UQAC\Hiver 2019\IA\Aspirobot01_TP1\Aspirobot01\obj\Release\netcoreapp2.1\Aspirobot01.dll
+C:\Users\theo\OneDrive\Etudes\UQAC\Hiver 2019\IA\Aspirobot01_TP1\Aspirobot01\obj\Release\netcoreapp2.1\Aspirobot01.pdb
+C:\Users\theo\OneDrive\Etudes\UQAC\Hiver 2019\IA\Aspirobot01_TP1\Aspirobot01\obj\Release\netcoreapp2.1\Aspirobot01.csprojAssemblyReference.cache

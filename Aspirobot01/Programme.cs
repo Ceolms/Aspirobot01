@@ -35,7 +35,7 @@ namespace Aspirobot01
                 }
                 aspirateur.limite = numValue;
             }
-            Console.Write("Et pour finir , logger le texter dans un fichier (dossier de l'executable) ? Y / N");
+            Console.WriteLine("Et pour finir , logger le texter dans un fichier (dossier de l'executable) ? Y / N");
             reponse = Console.ReadLine();
             while (reponse != "Y" && reponse != "y" && reponse != "N" && reponse != "n")
             {
